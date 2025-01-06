@@ -1,0 +1,122 @@
+{
+  "name": "f-doc",
+  "displayName": "f-doc",
+  "description": "",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.96.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "activationEvents": [
+      "onLanguage:vue"
+    ],
+    "commands": [
+      {
+        "command": "f-doc.query",
+        "title": "Postgres: SQL Query"
+      },
+      {
+        "command": "f-doc.openWebView",
+        "title": "Open component documentation"
+      },
+      {
+        "command": "f-doc.runSelectedCodeInFile",
+        "title": "Run selected code"
+      },
+      {
+        "command": "f-doc.runSelectedCodeAndOpenFile",
+        "title": "Generate fixture"
+      },
+      {
+        "command": "f-doc.deleteComment",
+        "title": "Удалить комментарий"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "f-doc.openWebView",
+          "when": "resourceLangId == 'vue'",
+          "group": "f-doc@1"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "f-doc.openWebView",
+          "when": "editorLangId == 'vue'",
+          "group": "f-doc@1"
+        },
+        {
+          "command": "f-doc.runSelectedCodeInFile",
+          "group": "f-doc@2",
+          "when": "editorLangId == 'typescript' || editorLangId == 'javascript' || editorLangId == 'vue'"
+        },
+        {
+          "command": "f-doc.runSelectedCodeAndOpenFile",
+          "group": "f-doc@3",
+          "when": "editorLangId == 'typescript' || editorLangId == 'javascript' || editorLangId == 'vue'"
+        }
+      ],
+      "editorTabs/context": [
+        {
+          "command": "f-doc.openWebView",
+          "when": "editorLangId == 'vue'",
+          "group": "f-doc@1"
+        },
+        {
+          "command": "f-doc.runSelectedCodeInFile",
+          "group": "f-doc@1",
+          "when": "editorLangId == 'typescript' || editorLangId == 'javascript' || editorLangId == 'vue'"
+        },
+        {
+          "command": "f-doc.runSelectedCodeAndOpenFile",
+          "group": "f-doc@1",
+          "when": "editorLangId == 'typescript' || editorLangId == 'javascript' || editorLangId == 'vue'"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/babel__traverse": "^7.20.6",
+    "@types/mocha": "^10.0.9",
+    "@types/node": "20.x",
+    "@types/pg": "^8.11.10",
+    "@types/plantuml-encoder": "^1.4.2",
+    "@types/vscode": "^1.96.0",
+    "@typescript-eslint/eslint-plugin": "^8.10.0",
+    "@typescript-eslint/parser": "^8.7.0",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1",
+    "eslint": "^9.13.0",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.6.3",
+    "webpack": "^5.95.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "@babel/parser": "^7.26.3",
+    "@babel/traverse": "^7.26.4",
+    "@vue/compiler-sfc": "^3.5.13",
+    "@vue/reactivity": "^3.5.13",
+    "konva": "^9.3.16",
+    "marked": "^15.0.4",
+    "pg": "^8.13.1",
+    "plantuml-encoder": "^1.4.0"
+  }
+}

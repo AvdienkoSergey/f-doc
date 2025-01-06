@@ -1,0 +1,25 @@
+body {
+  background-color: transparent;
+  padding-top: 10px;
+}
+
+.button-container {
+  margin: 20px 0;
+  display: flex;
+  gap: 10px;
+}
+
+.controls-panel {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
