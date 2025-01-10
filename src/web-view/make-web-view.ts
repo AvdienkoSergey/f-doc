@@ -106,6 +106,8 @@ export function makeWebViewPanel(
 
         case "getMarkdownContent":
           const docsConfig: IDocsConfig = await loadDocsConfig();
+          console.log(docsConfig);
+          console.log(message.text);
           if (Object.keys(docsConfig).indexOf(message.text) === -1) {
             showErrorMessage("The requested documentation was not found");
             return;
@@ -182,15 +184,6 @@ function getWebViewContent(
         <div class="button-container">
           <button id="component-diagram">Обзор зависимостей</button>
           <button id="cohesion-analysis">Анализ зацепления</button>
-          <button id="send-message-2">Движение данных</button>
-          <button id="send-message-3">Используемые API</button>
-          <button id="send-message-4">Сценарий использования</button>
-          <button id="send-message-5">Реализация логики</button>
-          <button id="send-message-6">Список тестов</button>
-        </div>
-        <div class="controls-panel">
-          <i class="material-icons cursor-pointer" id="remember-location">save</i>
-          <i class="material-icons cursor-pointer" id="restore-location">view_module</i>
         </div>
       </section>
 
